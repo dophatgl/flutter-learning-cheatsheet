@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:json_homework/data_manager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -66,6 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+    final dataManager = DataManager();
+    dataManager.fetchPhotos(Client()).then(
+      (value) {
+        print(value);
+      },
+    );
   }
 
   @override
